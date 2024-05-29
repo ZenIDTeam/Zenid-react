@@ -1,0 +1,15 @@
+{
+  "originHash" : "1631b6ac7db8add163e8b05d92579e389102a024cb9a2d69022e655dfe496993",
+  "pins" : [
+    {
+      "identity" : "zenid-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ZenIDTeam/ZenID-ios.git",
+      "state" : {
+        "revision" : "0b6c5f0f78d3e08475056712cf88d15acc0eeed6",
+        "version" : "2.0.26"
+      }
+    }
+  ],
+  "version" : 3
+}
