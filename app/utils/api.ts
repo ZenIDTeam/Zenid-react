@@ -1,4 +1,14 @@
-import {readFile} from '@dr.pogodin/react-native-fs';
+import {
+  readFile,
+  exists,
+  DocumentDirectoryPath,
+  stat,
+} from '@dr.pogodin/react-native-fs';
+import {PictureTakenResult} from '../../lib/ZenId/useOnPictureTaken';
+import {
+  MinedDataType,
+  ZenIdResponseType,
+} from '../../lib/ZenId/ZenIdResponseType';
 export const apiKey = '***BE_API_KEY***';
 export const baseUrl = '***BE_URI***';
 
@@ -17,27 +27,53 @@ export const getToken = async (
     });
 };
 
-export const sendSamplePicture = async (filePath: string) => {
+export const sendSamplePicture = async ({
+  filePath,
+  signature,
+  country,
+  pageCode,
+  role,
+  stateIndex,
+}: PictureTakenResult): Promise<MinedDataType | undefined> => {
   try {
-    console.log('filePath', filePath);
+    console.log('filePath', DocumentDirectoryPath, filePath);
+    if (!(await exists(filePath))) {
+      console.error('File does not exist');
+      return;
+    }
+    console.log('file exists');
+    const stats = await stat(filePath);
+    console.log('file stats', JSON.stringify(stats));
+    const formData = new FormData();
+    formData.append('picture', {
+      uri: 'file://' + filePath,
+      type: 'image/jpeg',
+      name: filePath.split('/').at(-1) || '',
+    });
+    formData.append('signature', signature || '');
+    const url = new URL(baseUrl + 'sample');
+    url.searchParams.append('country', country.toString());
 
-    const data = await readFile(filePath, 'base64');
+    url.searchParams.append('pageCode', pageCode.toString());
+    url.searchParams.append('role', role.toString());
+    url.searchParams.append('stateIndex', stateIndex.toString());
+    url.searchParams.append('expectedSampleType', 'DocumentPicture');
+    url.searchParams.append('api_key', apiKey);
+    console.log('url', url.toString());
 
-    console.log('file', data);
+    // console.log('file', data);
     // Odeslání souboru pomocí fetch
-    const response = await fetch(
-      baseUrl + 'sample?country=&expectedSampleType=DocumentPicture',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/octet-stream',
-        },
-        body: data,
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data',
       },
-    );
+      body: formData,
+    });
 
-    const result = await response.json();
+    const result = (await response.json()) as ZenIdResponseType;
     console.log(result);
+    return result.MinedData;
   } catch (error) {
     console.error('Error uploading image:', error);
   }

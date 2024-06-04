@@ -1,14 +1,15 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {Alert, Button, View} from 'react-native';
-import {useOnDocumentPictureStateChanged} from '../../lib/useOnDocumentPictureStateChanged';
-import {
-  PictureTakenResult,
-  useOnPictureTaken,
-} from '../../lib/useOnPictureTaken';
-import ZenId from '../../lib/ZenId';
+import {RootStackParamList} from '../../App';
+import ZenId, {PictureTakenResult, useOnPictureTaken} from '../../lib/ZenId';
+import {useOnDocumentPictureStateChanged} from '../../lib/ZenId/useOnDocumentPictureStateChanged';
+
 import {sendSamplePicture} from '../utils/api';
 
-export const Document = () => {
+export const Document = ({
+  navigation,
+}: NativeStackScreenProps<RootStackParamList, 'Document'>) => {
   const [enabledPictureButton, setEnabledPictureButton] = React.useState(false);
   const documentPictureViewRef = React.useRef(null);
 
@@ -37,7 +38,12 @@ export const Document = () => {
   const handlePictureTaken = (response: PictureTakenResult) => {
     console.log('Document Picture Taken: ', response);
     console.log(typeof response);
-    sendSamplePicture(response.filePath);
+    sendSamplePicture(response).then(data => {
+      if (!data) {
+        return;
+      }
+      navigation.navigate('Result', {data});
+    });
   };
 
   useOnPictureTaken(handlePictureTaken);

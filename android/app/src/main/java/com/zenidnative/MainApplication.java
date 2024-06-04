@@ -1,6 +1,8 @@
 package com.zenidnative;
 import android.os.Bundle;
 import android.app.Application;
+
+import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -21,11 +23,16 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-            return Arrays.<ReactPackage>asList(
-                    new MainReactPackage(),
-                    new RNScreensPackage(), 
-                    new SafeAreaContextPackage(), 
-                    new ZenIdPackage());
+            @SuppressWarnings("UnnecessaryLocalVariable")
+            List<ReactPackage> packages = new PackageList(this).getPackages();
+            packages.add(new ZenIdPackage());
+            return packages;
+            
+//            return Arrays.<ReactPackage>asList(
+//                    new MainReactPackage(),
+//                    new RNScreensPackage(),
+//                    new SafeAreaContextPackage(),
+//                    new ZenIdPackage());
 
         }
 

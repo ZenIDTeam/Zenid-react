@@ -14,6 +14,8 @@ import com.otaliastudios.cameraview.size.SizeSelectors;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+
 import cz.trask.zenid.sdk.DocumentPictureResult;
 import cz.trask.zenid.sdk.DocumentPictureSettings;
 import cz.trask.zenid.sdk.DocumentPictureState;
@@ -67,8 +69,16 @@ public class DocumentPictureViewManager extends SimpleViewManager<DocumentPictur
 
                 String jsonResult = null;
                 try {
-                    jsonResult = new JSONObject().put("stateIndex",documentPictureResult.getStateIndex())
-                            .put("filePath",documentPictureResult.getFilePath()).toString();
+
+                    jsonResult = new JSONObject()
+                            .put("stateIndex",documentPictureResult.getStateIndex())
+                            .put("filePath",documentPictureResult.getFilePath())
+                            .put("signature", documentPictureResult.getSignature())
+                            .put( "role", documentPictureResult.getRole())
+                            .put("country",documentPictureResult.getCountry().toString())
+                            .put("pageCode", documentPictureResult.getPage().getCode())
+
+                            .toString();
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

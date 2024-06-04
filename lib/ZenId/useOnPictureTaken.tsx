@@ -2,10 +2,10 @@ import {useCustomEventCallback} from './useCustomEventCallback';
 
 export type PictureTakenResult = {
   stateIndex: number;
-  roleIndex: number;
-  codeIndex: number;
-  pageIndex: number;
-  countryId: number;
+  role: number;
+  country: number;
+  documentCode: number;
+  pageCode: number;
   signature: string;
   filePath: string;
 };

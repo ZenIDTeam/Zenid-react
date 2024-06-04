@@ -4,6 +4,7 @@ import {Alert, Button, Text, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {RootStackParamList} from '../../App';
 import ZenId from '../../lib/ZenId';
+
 import {getToken} from '../utils/api';
 
 export const Home = ({
