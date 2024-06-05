@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RecogLib_iOS
 
 @objc(ZenIdModule)
 class ZenIdModule: NSObject{
@@ -23,6 +24,16 @@ class ZenIdModule: NSObject{
   @objc(isAuthorized:rejecter:)
   func isAuthorized(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock){
       resolve(true)
+  }
+  
+  @objc(getChallengeToken:rejecter:)
+  func getChallengeToken(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock){
+    resolve(ZenidSecurity.getChallengeToken())
+  }
+  
+  @objc(getChallengeToken:rejecter:)
+  func authorize(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock){
+    resolve(ZenidSecurity.getChallengeToken())
   }
   
   @objc(setConfig:key:)

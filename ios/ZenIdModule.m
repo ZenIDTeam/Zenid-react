@@ -14,5 +14,6 @@
 
 RCT_EXTERN_METHOD(initialize:(RCTResponseSenderBlock) callback)
 RCT_EXTERN_METHOD(isAuthorized:(RCTPromiseResolveBlock) resolve rejecter:(RCTRejectBlock))
-RCT_EXTERN_METHOD(setConfig:(String)url [key]:(String):key)
+RCT_EXTERN_METHOD(authorize:(RCTPromiseResolveBlock) resolve rejecter:(RCTRejectBlock))
+RCT_EXTERN_METHOD(getChallengeToken:(RCTPromiseResolveBlock) resolve rejecter:(RCTRejectBlock))
 @end
