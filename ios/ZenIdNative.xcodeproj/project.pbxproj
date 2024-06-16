@@ -8,16 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ZenIdNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ZenIdNativeTests.m */; };
+		0906A08A2C19FDE50079099F /* DocumentPictureViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0906A0892C19FDE50079099F /* DocumentPictureViewManager.swift */; };
+		0906A08C2C19FF870079099F /* DocumentPictureViewManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0906A08B2C19FF870079099F /* DocumentPictureViewManagerBridge.m */; };
 		096109422BFDB56600A409D8 /* ZenIdModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096109412BFDB56600A409D8 /* ZenIdModule.swift */; };
 		096109442BFDB5DD00A409D8 /* ZenIdModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 096109432BFDB5DD00A409D8 /* ZenIdModule.m */; };
-		096109472BFDBC2200A409D8 /* LibZenid_iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 096109462BFDBC2200A409D8 /* LibZenid_iOS */; };
-		096109492BFDBC2200A409D8 /* RecogLib_iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 096109482BFDBC2200A409D8 /* RecogLib_iOS */; };
-		0C80B921A6F3F58F76C31292 /* libPods-ZenIdNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-ZenIdNative.a */; };
+		0967C39A2C1B415F0087BA07 /* LibZenid_iOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0967C3972C1B41440087BA07 /* LibZenid_iOS.xcframework */; };
+		0967C39B2C1B415F0087BA07 /* LibZenid_iOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0967C3972C1B41440087BA07 /* LibZenid_iOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0967C39C2C1B41610087BA07 /* RecogLib_iOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0967C3962C1B41430087BA07 /* RecogLib_iOS.xcframework */; };
+		0967C39D2C1B41610087BA07 /* RecogLib_iOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0967C3962C1B41430087BA07 /* RecogLib_iOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0967C3A42C1B506A0087BA07 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0967C39F2C1B506A0087BA07 /* Apache License.txt */; };
+		0967C3A52C1B506A0087BA07 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0967C3A02C1B506A0087BA07 /* Roboto-Black.ttf */; };
+		0967C3A62C1B506A0087BA07 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0967C3A12C1B506A0087BA07 /* Roboto-Bold.ttf */; };
+		0967C3A72C1B506A0087BA07 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0967C3A22C1B506A0087BA07 /* Roboto-Regular.ttf */; };
+		0967C3A92C1B54CB0087BA07 /* RNEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967C3A82C1B54CB0087BA07 /* RNEventEmitter.swift */; };
+		0967C3AB2C1B55A50087BA07 /* RNEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0967C3AA2C1B55A50087BA07 /* RNEventEmitter.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-ZenIdNative-ZenIdNativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ZenIdNative-ZenIdNativeTests.a */; };
+		21812C2B4E89EA257EB5F96A /* libPods-ZenIdNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F56835A5B7C234CE96F61E /* libPods-ZenIdNative.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A1B80A7144010F36C1ED19CA /* libPods-ZenIdNative-ZenIdNativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0507AEA582FE92692EFDA48C /* libPods-ZenIdNative-ZenIdNativeTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,24 +40,49 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0967C3932C1B345C0087BA07 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0967C39D2C1B41610087BA07 /* RecogLib_iOS.xcframework in Embed Frameworks */,
+				0967C39B2C1B415F0087BA07 /* LibZenid_iOS.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* ZenIdNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenIdNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ZenIdNativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZenIdNativeTests.m; sourceTree = "<group>"; };
+		0507AEA582FE92692EFDA48C /* libPods-ZenIdNative-ZenIdNativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZenIdNative-ZenIdNativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0906A0892C19FDE50079099F /* DocumentPictureViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPictureViewManager.swift; sourceTree = "<group>"; };
+		0906A08B2C19FF870079099F /* DocumentPictureViewManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentPictureViewManagerBridge.m; sourceTree = "<group>"; };
 		0961093E2BFDB54C00A409D8 /* ZenIdNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZenIdNative-Bridging-Header.h"; sourceTree = "<group>"; };
 		096109412BFDB56600A409D8 /* ZenIdModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZenIdModule.swift; sourceTree = "<group>"; };
 		096109432BFDB5DD00A409D8 /* ZenIdModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZenIdModule.m; sourceTree = "<group>"; };
+		0967C3962C1B41430087BA07 /* RecogLib_iOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = RecogLib_iOS.xcframework; sourceTree = "<group>"; };
+		0967C3972C1B41440087BA07 /* LibZenid_iOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LibZenid_iOS.xcframework; sourceTree = "<group>"; };
+		0967C39F2C1B506A0087BA07 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
+		0967C3A02C1B506A0087BA07 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		0967C3A12C1B506A0087BA07 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		0967C3A22C1B506A0087BA07 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		0967C3A82C1B54CB0087BA07 /* RNEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNEventEmitter.swift; sourceTree = "<group>"; };
+		0967C3AA2C1B55A50087BA07 /* RNEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNEventEmitter.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ZenIdNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenIdNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ZenIdNative/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = ZenIdNative/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ZenIdNative/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ZenIdNative/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ZenIdNative/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-ZenIdNative-ZenIdNativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZenIdNative-ZenIdNativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-ZenIdNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative.debug.xcconfig"; path = "Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative.debug.xcconfig"; sourceTree = "<group>"; };
+		53F56835A5B7C234CE96F61E /* libPods-ZenIdNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZenIdNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5709B34CF0A7D63546082F79 /* Pods-ZenIdNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative.release.xcconfig"; path = "Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig"; path = "Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-ZenIdNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZenIdNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ZenIdNative/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig"; path = "Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -58,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-ZenIdNative-ZenIdNativeTests.a in Frameworks */,
+				A1B80A7144010F36C1ED19CA /* libPods-ZenIdNative-ZenIdNativeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,9 +101,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				096109492BFDBC2200A409D8 /* RecogLib_iOS in Frameworks */,
-				0C80B921A6F3F58F76C31292 /* libPods-ZenIdNative.a in Frameworks */,
-				096109472BFDBC2200A409D8 /* LibZenid_iOS in Frameworks */,
+				0967C39A2C1B415F0087BA07 /* LibZenid_iOS.xcframework in Frameworks */,
+				0967C39C2C1B41610087BA07 /* RecogLib_iOS.xcframework in Frameworks */,
+				21812C2B4E89EA257EB5F96A /* libPods-ZenIdNative.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,18 +127,36 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0967C39E2C1B50400087BA07 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0967C39F2C1B506A0087BA07 /* Apache License.txt */,
+				0967C3A02C1B506A0087BA07 /* Roboto-Black.ttf */,
+				0967C3A12C1B506A0087BA07 /* Roboto-Bold.ttf */,
+				0967C3A22C1B506A0087BA07 /* Roboto-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* ZenIdNative */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				0967C39E2C1B50400087BA07 /* Fonts */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				0967C3972C1B41440087BA07 /* LibZenid_iOS.xcframework */,
+				0967C3962C1B41430087BA07 /* RecogLib_iOS.xcframework */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				0961093E2BFDB54C00A409D8 /* ZenIdNative-Bridging-Header.h */,
 				096109412BFDB56600A409D8 /* ZenIdModule.swift */,
 				096109432BFDB5DD00A409D8 /* ZenIdModule.m */,
+				0906A0892C19FDE50079099F /* DocumentPictureViewManager.swift */,
+				0906A08B2C19FF870079099F /* DocumentPictureViewManagerBridge.m */,
+				0967C3A82C1B54CB0087BA07 /* RNEventEmitter.swift */,
+				0967C3AA2C1B55A50087BA07 /* RNEventEmitter.m */,
 			);
 			name = ZenIdNative;
 			sourceTree = "<group>";
@@ -112,8 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-ZenIdNative.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-ZenIdNative-ZenIdNativeTests.a */,
+				53F56835A5B7C234CE96F61E /* libPods-ZenIdNative.a */,
+				0507AEA582FE92692EFDA48C /* libPods-ZenIdNative-ZenIdNativeTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,16 +249,14 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				09E6E1DB2C1B1E210061D43D /* ShellScript */,
+				0967C3932C1B345C0087BA07 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ZenIdNative;
-			packageProductDependencies = (
-				096109462BFDBC2200A409D8 /* LibZenid_iOS */,
-				096109482BFDBC2200A409D8 /* RecogLib_iOS */,
-			);
 			productName = ZenIdNative;
 			productReference = 13B07F961A680F5B00A75B9A /* ZenIdNative.app */;
 			productType = "com.apple.product-type.application";
@@ -237,7 +288,6 @@
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			packageReferences = (
-				096109452BFDBC0200A409D8 /* XCRemoteSwiftPackageReference "ZenID-ios" */,
 			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
@@ -261,8 +311,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0967C3A72C1B506A0087BA07 /* Roboto-Regular.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				0967C3A42C1B506A0087BA07 /* Apache License.txt in Resources */,
+				0967C3A62C1B506A0087BA07 /* Roboto-Bold.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0967C3A52C1B506A0087BA07 /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +355,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		09E6E1DB2C1B1E210061D43D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\nSRC_DIR=\"$SRCROOT/../Models\"\nDEST_DIR=\"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app\"\n\ncp -R \"$SRC_DIR\" \"$DEST_DIR\"\n";
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -432,9 +503,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				096109442BFDB5DD00A409D8 /* ZenIdModule.m in Sources */,
+				0967C3A92C1B54CB0087BA07 /* RNEventEmitter.swift in Sources */,
 				096109422BFDB56600A409D8 /* ZenIdModule.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				0906A08C2C19FF870079099F /* DocumentPictureViewManagerBridge.m in Sources */,
+				0906A08A2C19FDE50079099F /* DocumentPictureViewManager.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				0967C3AB2C1B55A50087BA07 /* RNEventEmitter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,7 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GR84E875HN;
+				DEVELOPMENT_TEAM = FQAZ2Y87Y2;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ZenIdNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -538,7 +613,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GR84E875HN;
+				DEVELOPMENT_TEAM = FQAZ2Y87Y2;
 				INFOPLIST_FILE = ZenIdNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -608,6 +683,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -619,6 +702,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
@@ -679,6 +763,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -690,6 +782,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				NEW_SETTING = "";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -735,30 +828,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		096109452BFDBC0200A409D8 /* XCRemoteSwiftPackageReference "ZenID-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ZenIDTeam/ZenID-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.26;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		096109462BFDBC2200A409D8 /* LibZenid_iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 096109452BFDBC0200A409D8 /* XCRemoteSwiftPackageReference "ZenID-ios" */;
-			productName = LibZenid_iOS;
-		};
-		096109482BFDBC2200A409D8 /* RecogLib_iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 096109452BFDBC0200A409D8 /* XCRemoteSwiftPackageReference "ZenID-ios" */;
-			productName = RecogLib_iOS;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }

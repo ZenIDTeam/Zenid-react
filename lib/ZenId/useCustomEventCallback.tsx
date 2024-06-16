@@ -1,14 +1,12 @@
 import {useEffect} from 'react';
 import {NativeEventEmitter, NativeModules} from 'react-native';
 
-const {MyEventEmitter} = NativeModules;
-
 export const useCustomEventCallback = <T,>(
   eventName: string,
   callback: (event: T) => void,
 ) => {
   useEffect(() => {
-    const eventEmitter = new NativeEventEmitter(MyEventEmitter);
+    const eventEmitter = new NativeEventEmitter(NativeModules.RNEventEmitter);
     const eventListener = eventEmitter.addListener(eventName, (event: T) => {
       callback(event);
     });

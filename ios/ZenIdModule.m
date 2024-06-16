@@ -12,8 +12,10 @@
 @interface RCT_EXTERN_MODULE(ZenIdModule, NSObject)
 
 
-RCT_EXTERN_METHOD(initialize:(RCTResponseSenderBlock) callback)
-RCT_EXTERN_METHOD(isAuthorized:(RCTPromiseResolveBlock) resolve rejecter:(RCTRejectBlock))
-RCT_EXTERN_METHOD(authorize:(RCTPromiseResolveBlock) resolve rejecter:(RCTRejectBlock))
-RCT_EXTERN_METHOD(getChallengeToken:(RCTPromiseResolveBlock) resolve rejecter:(RCTRejectBlock))
+RCT_EXTERN_METHOD(initializeSdk:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock))
+RCT_EXTERN_METHOD(isAuthorized:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock))
+RCT_EXTERN_METHOD(authorize:(NSString *)token resolve:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock))
+RCT_EXTERN_METHOD(getChallengeToken:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock))
+RCT_EXTERN_METHOD(selectProfile:(NSString *)profile resolve:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock))
+RCT_EXTERN_METHOD(activateNextDocumentPicture:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock))
 @end

@@ -52,7 +52,7 @@ export const Document = ({
   return (
     <View style={{flex: 1}}>
       <Button
-        disabled={!enabledPictureButton}
+        disabled={!enabledPictureButton && false}
         title="Take Picture"
         onPress={handleTakeNextDocumentPicture}
       />
@@ -61,7 +61,7 @@ export const Document = ({
         style={{
           flex: 1,
           width: '100%',
-          height: '100%',
+          height: '50%',
         }}
       />
     </View>

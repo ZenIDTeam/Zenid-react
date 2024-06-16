@@ -6,39 +6,15 @@ import {
 } from 'react-native';
 
 const {ZenIdModule} = NativeModules;
-
+console.log(NativeModules);
 const DocumentPictureView = requireNativeComponent(
   'DocumentPictureView',
 ) as HostComponent<any>;
-
+console.log(ZenIdModule);
 export default {
   initializeSdk() {
     return new Promise<string>((resolve, reject) => {
       ZenIdModule.initializeSdk()
-        .then((message: string) => resolve(message))
-        .catch((error: string) => reject(error));
-    });
-  },
-
-  initializeApiService(baseUrl: string, apiKey: string) {
-    return new Promise<string>((resolve, reject) => {
-      ZenIdModule.initializeApiService(baseUrl, apiKey)
-        .then((message: string) => resolve(message))
-        .catch((error: string) => reject(error));
-    });
-  },
-
-  initAuthorizeButton(profile: string) {
-    return new Promise<string>((resolve, reject) => {
-      ZenIdModule.initAuthorizeButton(profile)
-        .then((message: string) => resolve(message))
-        .catch((error: string) => reject(error));
-    });
-  },
-
-  initDocumentVerifierButton() {
-    return new Promise<string>((resolve, reject) => {
-      ZenIdModule.initDocumentVerifierButton()
         .then((message: string) => resolve(message))
         .catch((error: string) => reject(error));
     });
@@ -53,13 +29,6 @@ export default {
     });
   },
 
-  postDocumentPictureSample(filePath: string) {
-    return new Promise<string>((resolve, reject) => {
-      ZenIdModule.postDocumentPictureSample(filePath)
-        .then((message: string) => resolve(message))
-        .catch((error: string) => reject(error));
-    });
-  },
   authorize(responseToken: string) {
     return new Promise<string>((resolve, reject) => {
       ZenIdModule.authorize(responseToken)

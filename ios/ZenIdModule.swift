@@ -1,44 +1,58 @@
-//
-//  ZenId.swift
-//  ZenIdNative
-//
-//  Created by Josef Kvapil on 15.05.2024.
-//
-
 import Foundation
 import RecogLib_iOS
 
 @objc(ZenIdModule)
-class ZenIdModule: NSObject{
+class ZenIdModule: NSObject, RCTBridgeModule {
   
-  private var baseUrl: String = "";
-  private var apiKey:String = "";
-  
-  @objc(initialize:)
-  func initialize(_ callback: RCTResponseSenderBlock){
-    baseUrl = "test"
-    apiKey = "test"
-    callback(["ZenId initialized"])
+  static func moduleName() -> String! {
+    return "ZenIdModule"
   }
-  
-  @objc(isAuthorized:rejecter:)
-  func isAuthorized(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock){
-      resolve(true)
+
+ static func requiresMainQueueSetup() -> Bool {
+    return true
   }
-  
-  @objc(getChallengeToken:rejecter:)
-  func getChallengeToken(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock){
+ 
+
+  @objc
+  func isAuthorized(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
+    resolve(true)
+  }
+
+  @objc
+  func getChallengeToken(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
     resolve(ZenidSecurity.getChallengeToken())
   }
-  
-  @objc(getChallengeToken:rejecter:)
-  func authorize(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock){
-    resolve(ZenidSecurity.getChallengeToken())
+
+  @objc
+  func authorize(_ token: String, resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
+    let authorized = ZenidSecurity.authorize(responseToken: token)
+    if authorized {
+      resolve("Authorized")
+    } else {
+      reject("AuthorizationError", "Failed to authorize", nil)
+    }
   }
-  
-  @objc(setConfig:key:)
-  func setConfig(url: String, key: String){
-    baseUrl = url;
-    apiKey = key;
+
+  @objc
+  func initializeSdk(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    resolve("SDK initialized successfully")
   }
+
+  @objc
+  func selectProfile(_ profile: String, resolve: RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    let profileSelected = ZenidSecurity.selectProfile(name: profile)
+    if profileSelected {
+      resolve("Profile selected")
+    } else
+    {
+      reject("ProfileSelectionError", "Failed to select profile", nil)
+    }
+  }
+
+  @objc
+   func activateNextDocumentPicture(_ viewTag: NSNumber, resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+   print("ahoj")
+   }
+  
+  
 }

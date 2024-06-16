@@ -1,8 +1,8 @@
-//
-//  RNEventEmitter.m
-//  ZenIdNative
-//
-//  Created by Josef Kvapil on 13.06.2024.
-//
 
 #import <Foundation/Foundation.h>
+#import "React/RCTEventEmitter.h"
+@interface RCT_EXTERN_MODULE(RNEventEmitter, RCTEventEmitter)
+
+RCT_EXTERN_METHOD(supportedEvents)
+
+@end

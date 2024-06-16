@@ -6,7 +6,6 @@ import {Home} from './app/pages/home';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Document} from './app/pages/document';
 import {Text} from 'react-native';
-import {apiKey, baseUrl} from './app/utils/api';
 
 import ResultPage from './app/pages/result';
 
@@ -25,7 +24,6 @@ const App = () => {
       .then(message => {
         console.log(message);
         setIsLoading(false);
-        return ZenId.initializeApiService(baseUrl, apiKey);
       })
       .catch(error => {
         console.error(error);

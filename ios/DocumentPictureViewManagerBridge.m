@@ -1,8 +1,5 @@
-//
-//  DocumentPictureViewManagerBridge.m
-//  ZenIdNative
-//
-//  Created by Josef Kvapil on 12.06.2024.
-//
+#import <React/RCTViewManager.h>
 
-#import <Foundation/Foundation.h>
+
+@interface RCT_EXTERN_MODULE(DocumentPictureViewManager, RCTViewManager)
+@end
