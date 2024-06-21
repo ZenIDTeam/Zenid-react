@@ -25,9 +25,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		21812C2B4E89EA257EB5F96A /* libPods-ZenIdNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F56835A5B7C234CE96F61E /* libPods-ZenIdNative.a */; };
+		574EFC10AE8D916DF54D23E9 /* libPods-ZenIdNative-ZenIdNativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2576CC0294FB7CADCD9C1A6C /* libPods-ZenIdNative-ZenIdNativeTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A1B80A7144010F36C1ED19CA /* libPods-ZenIdNative-ZenIdNativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0507AEA582FE92692EFDA48C /* libPods-ZenIdNative-ZenIdNativeTests.a */; };
+		EE99334F97DFF8F50D153532 /* libPods-ZenIdNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D513801918613DA2D077E5 /* libPods-ZenIdNative.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,6 @@
 		00E356EE1AD99517003FC87E /* ZenIdNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenIdNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ZenIdNativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZenIdNativeTests.m; sourceTree = "<group>"; };
-		0507AEA582FE92692EFDA48C /* libPods-ZenIdNative-ZenIdNativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZenIdNative-ZenIdNativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0906A0892C19FDE50079099F /* DocumentPictureViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPictureViewManager.swift; sourceTree = "<group>"; };
 		0906A08B2C19FF870079099F /* DocumentPictureViewManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentPictureViewManagerBridge.m; sourceTree = "<group>"; };
 		0961093E2BFDB54C00A409D8 /* ZenIdNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZenIdNative-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -79,12 +78,13 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ZenIdNative/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ZenIdNative/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ZenIdNative/main.m; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-ZenIdNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative.debug.xcconfig"; path = "Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative.debug.xcconfig"; sourceTree = "<group>"; };
-		53F56835A5B7C234CE96F61E /* libPods-ZenIdNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZenIdNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5709B34CF0A7D63546082F79 /* Pods-ZenIdNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative.release.xcconfig"; path = "Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig"; path = "Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		160208DAA00B499E2DF189EC /* Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig"; path = "Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig"; sourceTree = "<group>"; };
+		2576CC0294FB7CADCD9C1A6C /* libPods-ZenIdNative-ZenIdNativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZenIdNative-ZenIdNativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C030A426922890564F9CEFF /* Pods-ZenIdNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative.debug.xcconfig"; path = "Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative.debug.xcconfig"; sourceTree = "<group>"; };
+		7C390FD071E236E313B5C07B /* Pods-ZenIdNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative.release.xcconfig"; path = "Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ZenIdNative/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig"; path = "Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig"; sourceTree = "<group>"; };
+		B8E508C946894DA13B0E1F66 /* Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig"; path = "Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1D513801918613DA2D077E5 /* libPods-ZenIdNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZenIdNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1B80A7144010F36C1ED19CA /* libPods-ZenIdNative-ZenIdNativeTests.a in Frameworks */,
+				574EFC10AE8D916DF54D23E9 /* libPods-ZenIdNative-ZenIdNativeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 			files = (
 				0967C39A2C1B415F0087BA07 /* LibZenid_iOS.xcframework in Frameworks */,
 				0967C39C2C1B41610087BA07 /* RecogLib_iOS.xcframework in Frameworks */,
-				21812C2B4E89EA257EB5F96A /* libPods-ZenIdNative.a in Frameworks */,
+				EE99334F97DFF8F50D153532 /* libPods-ZenIdNative.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,8 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				53F56835A5B7C234CE96F61E /* libPods-ZenIdNative.a */,
-				0507AEA582FE92692EFDA48C /* libPods-ZenIdNative-ZenIdNativeTests.a */,
+				E1D513801918613DA2D077E5 /* libPods-ZenIdNative.a */,
+				2576CC0294FB7CADCD9C1A6C /* libPods-ZenIdNative-ZenIdNativeTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -205,10 +205,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-ZenIdNative.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-ZenIdNative.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig */,
+				2C030A426922890564F9CEFF /* Pods-ZenIdNative.debug.xcconfig */,
+				7C390FD071E236E313B5C07B /* Pods-ZenIdNative.release.xcconfig */,
+				B8E508C946894DA13B0E1F66 /* Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig */,
+				160208DAA00B499E2DF189EC /* Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -220,12 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ZenIdNativeTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				F75234C6C8E8CDBA9B99507B /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				1375BC946BF8288BD69D29EB /* [CP] Embed Pods Frameworks */,
+				93BDFD7A9393AA109F274A95 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -241,16 +241,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ZenIdNative" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				A65FE336F80F2CB9F7B59C2A /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
 				09E6E1DB2C1B1E210061D43D /* ShellScript */,
 				0967C3932C1B345C0087BA07 /* Embed Frameworks */,
+				C2038A08AE6D7202759C147C /* [CP] Embed Pods Frameworks */,
+				12894E12A25327A667E4FE87 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,8 +287,6 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
-			packageReferences = (
-			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,23 +337,6 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		09E6E1DB2C1B1E210061D43D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,29 +354,58 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\nSRC_DIR=\"$SRCROOT/../Models\"\nDEST_DIR=\"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app\"\n\ncp -R \"$SRC_DIR\" \"$DEST_DIR\"\n";
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		12894E12A25327A667E4FE87 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZenIdNative-ZenIdNativeTests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		1375BC946BF8288BD69D29EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93BDFD7A9393AA109F274A95 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A65FE336F80F2CB9F7B59C2A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,55 +427,43 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		C2038A08AE6D7202759C147C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		F75234C6C8E8CDBA9B99507B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZenIdNative-ZenIdNativeTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative/Pods-ZenIdNative-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZenIdNative-ZenIdNativeTests/Pods-ZenIdNative-ZenIdNativeTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -526,7 +524,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig */;
+			baseConfigurationReference = B8E508C946894DA13B0E1F66 /* Pods-ZenIdNative-ZenIdNativeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -554,7 +552,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig */;
+			baseConfigurationReference = 160208DAA00B499E2DF189EC /* Pods-ZenIdNative-ZenIdNativeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -579,7 +577,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-ZenIdNative.debug.xcconfig */;
+			baseConfigurationReference = 2C030A426922890564F9CEFF /* Pods-ZenIdNative.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -608,7 +606,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-ZenIdNative.release.xcconfig */;
+			baseConfigurationReference = 7C390FD071E236E313B5C07B /* Pods-ZenIdNative.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -711,7 +709,10 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -790,7 +791,10 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

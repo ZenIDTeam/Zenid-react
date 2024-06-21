@@ -40,19 +40,5 @@
   },
   "engines": {
     "node": ">=16"
-  },
-  "react-native-builder-bob": {
-    "source": "lib",
-    "output": "build/lib",
-    "targets": [
-      "commonjs",
-      "module",
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json"
-        }
-      ]
-    ]
   }
 }
