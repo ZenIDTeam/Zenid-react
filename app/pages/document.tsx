@@ -6,7 +6,15 @@ import ZenId, {PictureTakenResult, useOnPictureTaken} from '../../lib/ZenId';
 import {useOnDocumentPictureStateChanged} from '../../lib/ZenId/useOnDocumentPictureStateChanged';
 
 import {sendSamplePicture} from '../utils/api';
-
+const filters = [
+  {
+    documentRole: 'ID',
+    documentPage: 'FRONT_SIDE',
+    documentCountry: 'CZ',
+    documentCode: 1234,
+  },
+  // další filtry...
+];
 export const Document = ({
   navigation,
 }: NativeStackScreenProps<RootStackParamList, 'Document'>) => {
@@ -57,6 +65,7 @@ export const Document = ({
         onPress={handleTakeNextDocumentPicture}
       />
       <ZenId.DocumentPictureView
+        acceptableInput={filters}
         ref={documentPictureViewRef}
         style={{
           flex: 1,

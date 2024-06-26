@@ -1,27 +1,28 @@
-import {
-  readFile,
-  exists,
-  DocumentDirectoryPath,
-  stat,
-} from '@dr.pogodin/react-native-fs';
+import {exists, DocumentDirectoryPath} from '@dr.pogodin/react-native-fs';
 import {PictureTakenResult} from '../../lib/ZenId/useOnPictureTaken';
 import {
   MinedDataType,
   ZenIdResponseType,
 } from '../../lib/ZenId/ZenIdResponseType';
+import axiosInstance from './axiosInstance';
+import {Buffer} from 'buffer';
+import {TextEncoder} from 'text-encoding';
+import {base64toBinary} from './base64toBinary';
+
 export const apiKey = '***BE_API_KEY***';
 export const baseUrl = '***BE_URI***';
 
 export const getToken = async (
   challengeToken: string,
 ): Promise<{Response: string}> => {
-  return fetch(
-    baseUrl + 'initSdk?token=' + challengeToken + '&api_key=' + apiKey,
-    {
-      method: 'GET',
-    },
-  )
-    .then(data => data.json())
+  return axiosInstance
+    .get(baseUrl + 'initSdk', {
+      params: {
+        token: challengeToken,
+        api_key: apiKey,
+      },
+    })
+    .then(response => response.data)
     .catch(error => {
       console.error('Error:', error);
     });
@@ -34,6 +35,7 @@ export const sendSamplePicture = async ({
   pageCode,
   role,
   stateIndex,
+  file,
 }: PictureTakenResult): Promise<MinedDataType | undefined> => {
   try {
     console.log('filePath', DocumentDirectoryPath, filePath);
@@ -41,19 +43,23 @@ export const sendSamplePicture = async ({
       console.error('File does not exist');
       return;
     }
-    console.log('file exists');
-    const stats = await stat(filePath);
-    console.log('file stats', JSON.stringify(stats));
-    const formData = new FormData();
-    formData.append('picture', {
-      uri: 'file://' + filePath,
-      type: 'image/jpeg',
-      name: filePath.split('/').at(-1) || '',
-    });
-    formData.append('signature', signature || '');
-    const url = new URL(baseUrl + 'sample');
-    url.searchParams.append('country', country.toString());
+    const imageData = base64toBinary(file);
+    console.log('----file-----');
+    console.log(file);
+    console.log(imageData);
+    console.log('Reading file');
+    const encoder = new TextEncoder();
 
+    const signatureData = encoder.encode(signature);
+    const httpBodyData = new Uint8Array(
+      imageData.length + signatureData.length,
+    );
+    httpBodyData.set(imageData, 0);
+    httpBodyData.set(signatureData, imageData.length);
+
+    const url = new URL(baseUrl + 'sample');
+
+    url.searchParams.append('country', country.toString());
     url.searchParams.append('pageCode', pageCode.toString());
     url.searchParams.append('role', role.toString());
     url.searchParams.append('stateIndex', stateIndex.toString());
@@ -63,18 +69,39 @@ export const sendSamplePicture = async ({
 
     // console.log('file', data);
     // Odeslání souboru pomocí fetch
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      body: formData,
-    });
+    // ...
 
-    const result = (await response.json()) as ZenIdResponseType;
+    const response = await axiosInstance
+      .post(url.toString(), httpBodyData, {
+        headers: {
+          //  'Content-Type': 'multipart/form-data',
+          'Content-type': '"application/octet-stream"',
+          Accept: 'application/json',
+          'Content-Length': httpBodyData.length.toString(),
+        },
+      })
+      .then(response => response.data)
+      .catch(error => {
+        if (error.response) {
+          // Server responded with a status other than 2xx
+          console.error('Server responded with status:', error.response.status);
+        } else if (error.request) {
+          // Request was made but no response received
+          console.error('No response received:', error.request);
+        } else {
+          // Something happened in setting up the request
+          console.error('Error setting up request:', error.message);
+        }
+        console.error('Error config:', error.config);
+      });
+
+    const result = response as ZenIdResponseType;
     console.log(result);
     return result.MinedData;
   } catch (error) {
+    console.log(
+      JSON.stringify(error, ['message', 'arguments', 'type', 'name']),
+    );
     console.error('Error uploading image:', error);
   }
 };

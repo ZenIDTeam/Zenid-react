@@ -94,6 +94,7 @@ class DocumentPictureView: UIView, DocumentControllerDelegate {
       "pageCode": result.page?.rawValue,
       "signature": result.signature?.signature,
       "filePath": savedImage,
+      "file": result.signature?.image
     ]
     
     do {

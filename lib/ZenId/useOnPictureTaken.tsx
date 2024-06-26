@@ -8,6 +8,7 @@ export type PictureTakenResult = {
   pageCode: number;
   signature: string;
   filePath: string;
+  file: any;
 };
 type Callback = (event: PictureTakenResult) => void;
 

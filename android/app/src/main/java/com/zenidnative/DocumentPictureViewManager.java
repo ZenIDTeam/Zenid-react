@@ -4,6 +4,8 @@ import android.widget.Toast;
 
 import androidx.lifecycle.LifecycleOwner;
 
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -15,11 +17,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import android.util.Base64;
+
+import cz.trask.zenid.sdk.DocumentAcceptableInput;
+import cz.trask.zenid.sdk.DocumentCountry;
+import cz.trask.zenid.sdk.DocumentPage;
 import cz.trask.zenid.sdk.DocumentPictureResult;
 import cz.trask.zenid.sdk.DocumentPictureSettings;
 import cz.trask.zenid.sdk.DocumentPictureState;
 import cz.trask.zenid.sdk.DocumentPictureView;
+import cz.trask.zenid.sdk.DocumentRole;
 import cz.trask.zenid.sdk.Language;
 import cz.trask.zenid.sdk.NfcStatus;
 import cz.trask.zenid.sdk.VisualizationSettings;
@@ -47,6 +60,7 @@ public class DocumentPictureViewManager extends SimpleViewManager<DocumentPictur
 
         DocumentPictureSettings documentPictureSettings = new DocumentPictureSettings.Builder()
                 .enableAimingCircle(true)
+
                 .build();
 
         documentPictureView.setPreviewStreamSize(SizeSelectors.biggest());
@@ -69,7 +83,15 @@ public class DocumentPictureViewManager extends SimpleViewManager<DocumentPictur
 
                 String jsonResult = null;
                 try {
+                    File file = new File(documentPictureResult.getFilePath());
+                    byte[] bytes = new byte[(int) file.length()];
 
+                    try(FileInputStream fis = new FileInputStream(file)) {
+                        fis.read(bytes);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    String encodedString = Base64.encodeToString(bytes, Base64.DEFAULT);
                     jsonResult = new JSONObject()
                             .put("stateIndex",documentPictureResult.getStateIndex())
                             .put("filePath",documentPictureResult.getFilePath())
@@ -77,6 +99,7 @@ public class DocumentPictureViewManager extends SimpleViewManager<DocumentPictur
                             .put( "role", documentPictureResult.getRole())
                             .put("country",documentPictureResult.getCountry().toString())
                             .put("pageCode", documentPictureResult.getPage().getCode())
+                            .put("file", encodedString)
 
                             .toString();
                 } catch (JSONException e) {
@@ -93,5 +116,21 @@ public class DocumentPictureViewManager extends SimpleViewManager<DocumentPictur
         });
 
         return documentPictureView;
+    }
+
+    @ReactProp(name = "acceptableInput")
+    public void setAcceptableInput(DocumentPictureView view, ReadableArray acceptableInputArray) {
+        List<DocumentAcceptableInput.Filter> filters = new ArrayList<>();
+        for (int i = 0; i < acceptableInputArray.size(); i++) {
+            ReadableMap filterMap = acceptableInputArray.getMap(i);
+            DocumentRole role = DocumentRole.valueOf(filterMap.getString("documentRole"));
+            DocumentPage page = DocumentPage.valueOf(filterMap.getString("documentPage"));
+            DocumentCountry country = DocumentCountry.valueOf(filterMap.getString("documentCountry"));
+            Integer code = filterMap.hasKey("documentCode") ? filterMap.getInt("documentCode") : null;
+            DocumentAcceptableInput.Filter filter = new DocumentAcceptableInput.Filter(role, page, country, code);
+            filters.add(filter);
+        }
+        DocumentAcceptableInput acceptableInput = new DocumentAcceptableInput(filters);
+        view.setDocumentAcceptableInput(acceptableInput);
     }
 }

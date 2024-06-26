@@ -19,6 +19,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
+
   useEffect(() => {
     ZenId.initializeSdk()
       .then(message => {
@@ -38,7 +39,11 @@ const App = () => {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Document" component={Document} />
-        <Stack.Screen name="Result" component={ResultPage} />
+        <Stack.Screen
+          options={{headerLeft: () => <></>}}
+          name="Result"
+          component={ResultPage}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

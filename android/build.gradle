@@ -39,6 +39,7 @@ allprojects {
                 username = "ZenIDTeam"
                 password = "***API_KEY***"
             }
+
         }
     }
 }
