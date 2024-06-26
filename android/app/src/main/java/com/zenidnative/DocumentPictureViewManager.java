@@ -50,7 +50,8 @@ public class DocumentPictureViewManager extends SimpleViewManager<DocumentPictur
     @Override
     protected DocumentPictureView createViewInstance(ThemedReactContext reactContext) {
         documentPictureView = new DocumentPictureView(reactContext);
-        documentPictureView.setLifecycleOwner((LifecycleOwner) reactContext.getCurrentActivity());
+        documentPictureView.open();
+      //  documentPictureView.setLifecycleOwner((LifecycleOwner) reactContext.getCurrentActivity());
 
         VisualizationSettings visualizationSettings = new VisualizationSettings.Builder()
                 .showDebugVisualization(false)
@@ -113,6 +114,7 @@ public class DocumentPictureViewManager extends SimpleViewManager<DocumentPictur
             }
 
 
+
         });
 
         return documentPictureView;
@@ -132,5 +134,16 @@ public class DocumentPictureViewManager extends SimpleViewManager<DocumentPictur
         }
         DocumentAcceptableInput acceptableInput = new DocumentAcceptableInput(filters);
         view.setDocumentAcceptableInput(acceptableInput);
+    }
+
+    @Override
+    public void onDropViewInstance(DocumentPictureView view) {
+        super.onDropViewInstance(view);
+        if (view != null) {
+            //view.setCallback(null);
+            //TODO: solve race condition and in android sdk check if callback is not null
+            view.destroy();
+
+        }
     }
 }
