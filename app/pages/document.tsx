@@ -1,6 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {Alert, Button, View} from 'react-native';
+import {ActivityIndicator, Alert, Button, View} from 'react-native';
 import {RootStackParamList} from '../../App';
 import ZenId, {PictureTakenResult, useOnPictureTaken} from '../../lib/ZenId';
 import {useOnDocumentPictureStateChanged} from '../../lib/ZenId/useOnDocumentPictureStateChanged';
@@ -20,6 +20,7 @@ export const Document = ({
 }: NativeStackScreenProps<RootStackParamList, 'Document'>) => {
   const [enabledPictureButton, setEnabledPictureButton] = React.useState(false);
   const documentPictureViewRef = React.useRef(null);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleTakeNextDocumentPicture = () => {
     ZenId.activateTakeNextDocumentPicture(documentPictureViewRef.current)
@@ -46,6 +47,7 @@ export const Document = ({
   const handlePictureTaken = (response: PictureTakenResult) => {
     console.log('Document Picture Taken: ', response);
     console.log(typeof response);
+    setIsLoading(true);
     sendSamplePicture(response).then(data => {
       if (!data) {
         return;
@@ -59,20 +61,26 @@ export const Document = ({
 
   return (
     <View style={{flex: 1}}>
-      <Button
-        disabled={!enabledPictureButton && false}
-        title="Take Picture"
-        onPress={handleTakeNextDocumentPicture}
-      />
-      <ZenId.DocumentPictureView
-        acceptableInput={filters}
-        ref={documentPictureViewRef}
-        style={{
-          flex: 1,
-          width: '100%',
-          height: '50%',
-        }}
-      />
+      {!isLoading ? (
+        <>
+          <Button
+            disabled={!enabledPictureButton && false}
+            title="Take Picture"
+            onPress={handleTakeNextDocumentPicture}
+          />
+          <ZenId.DocumentPictureView
+            acceptableInput={filters}
+            ref={documentPictureViewRef}
+            style={{
+              flex: 1,
+              width: '100%',
+              height: '50%',
+            }}
+          />
+        </>
+      ) : (
+        <ActivityIndicator size="large" />
+      )}
     </View>
   );
 };

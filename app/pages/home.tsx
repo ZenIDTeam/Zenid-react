@@ -1,6 +1,6 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {Alert, Button, Text, View} from 'react-native';
+import {ActivityIndicator, Alert, Button, Text, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {RootStackParamList} from '../../App';
 import ZenId from '../../lib/ZenId';
@@ -11,6 +11,7 @@ export const Home = ({
   navigation,
 }: NativeStackScreenProps<RootStackParamList, 'Home'>) => {
   const [isSdkInitialized, setIsSdkInitialized] = React.useState(false);
+  const [isAuthorizing, setIsAuthorizing] = React.useState(false);
   // const handleAuthorize = () => {
   //   ZenId.initAuthorizeButton('NFC')
   //     .then(message => {
@@ -23,6 +24,7 @@ export const Home = ({
   // };
 
   const handleAuthorize = async () => {
+    setIsAuthorizing(true);
     const challengeToken = await ZenId.getChallengeToken();
     console.log('Challenge Token: ', challengeToken);
     const token = await getToken(challengeToken);
@@ -35,7 +37,7 @@ export const Home = ({
       })
       .then(message => {
         Alert.alert('Profile Selected', message);
-
+        setIsAuthorizing(false);
         setIsSdkInitialized(true);
       })
       .catch(error => {
@@ -52,6 +54,7 @@ export const Home = ({
           title="Go to Document Verification"
           onPress={() => navigation.navigate('Document')}
         />
+        {isAuthorizing && <ActivityIndicator size="large" />}
       </View>
     </SafeAreaProvider>
   );
