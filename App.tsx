@@ -1,6 +1,9 @@
 import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import ZenId, {MinedDataType} from './lib/ZenId';
+import ZenId, {
+  DocumentControllerConfiguration,
+  MinedDataType,
+} from './lib/ZenId';
 import {Home} from './app/pages/home';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -11,7 +14,7 @@ import ResultPage from './app/pages/result';
 
 export type RootStackParamList = {
   Home: undefined;
-  Document: undefined;
+  Document: {configuration: DocumentControllerConfiguration; name: string};
   Result: {data: MinedDataType};
 };
 
@@ -38,7 +41,11 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Document" component={Document} />
+        <Stack.Screen
+          name="Document"
+          component={Document}
+          options={({route}) => ({title: route.params.name})}
+        />
         <Stack.Screen
           options={{headerLeft: () => <></>}}
           name="Result"

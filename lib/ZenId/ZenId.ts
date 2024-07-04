@@ -4,12 +4,13 @@ import {
   findNodeHandle,
   HostComponent,
 } from 'react-native';
+import {DocumentPictureViewProps} from './DocumentPictureViewType';
 
 const {ZenIdModule} = NativeModules;
 console.log(NativeModules);
 const DocumentPictureView = requireNativeComponent(
   'DocumentPictureView',
-) as HostComponent<any>;
+) as HostComponent<DocumentPictureViewProps>;
 console.log(ZenIdModule);
 export default {
   initializeSdk() {

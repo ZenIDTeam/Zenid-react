@@ -22,6 +22,7 @@
 		0967C3A72C1B506A0087BA07 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0967C3A22C1B506A0087BA07 /* Roboto-Regular.ttf */; };
 		0967C3A92C1B54CB0087BA07 /* RNEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967C3A82C1B54CB0087BA07 /* RNEventEmitter.swift */; };
 		0967C3AB2C1B55A50087BA07 /* RNEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0967C3AA2C1B55A50087BA07 /* RNEventEmitter.m */; };
+		098407612C35F10700335878 /* DocumentPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098407602C35F10700335878 /* DocumentPictureView.swift */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -72,6 +73,7 @@
 		0967C3A22C1B506A0087BA07 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		0967C3A82C1B54CB0087BA07 /* RNEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNEventEmitter.swift; sourceTree = "<group>"; };
 		0967C3AA2C1B55A50087BA07 /* RNEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNEventEmitter.m; sourceTree = "<group>"; };
+		098407602C35F10700335878 /* DocumentPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPictureView.swift; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ZenIdNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenIdNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ZenIdNative/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = ZenIdNative/AppDelegate.mm; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				096109412BFDB56600A409D8 /* ZenIdModule.swift */,
 				096109432BFDB5DD00A409D8 /* ZenIdModule.m */,
 				0906A0892C19FDE50079099F /* DocumentPictureViewManager.swift */,
+				098407602C35F10700335878 /* DocumentPictureView.swift */,
 				0906A08B2C19FF870079099F /* DocumentPictureViewManagerBridge.m */,
 				0967C3A82C1B54CB0087BA07 /* RNEventEmitter.swift */,
 				0967C3AA2C1B55A50087BA07 /* RNEventEmitter.m */,
@@ -508,6 +511,7 @@
 				0906A08A2C19FDE50079099F /* DocumentPictureViewManager.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				0967C3AB2C1B55A50087BA07 /* RNEventEmitter.m in Sources */,
+				098407612C35F10700335878 /* DocumentPictureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +593,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -617,7 +621,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -709,10 +713,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -791,10 +792,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

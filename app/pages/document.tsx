@@ -2,21 +2,23 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {ActivityIndicator, Alert, Button, View} from 'react-native';
 import {RootStackParamList} from '../../App';
-import ZenId, {PictureTakenResult, useOnPictureTaken} from '../../lib/ZenId';
+import ZenId, {
+  DocumentControllerConfiguration,
+  PictureTakenResult,
+  useOnPictureTaken,
+  DocumentRole,
+  DocumentCountry,
+  DocumentPage,
+} from '../../lib/ZenId';
 import {useOnDocumentPictureStateChanged} from '../../lib/ZenId/useOnDocumentPictureStateChanged';
 
 import {sendSamplePicture} from '../utils/api';
-const filters = [
-  {
-    documentRole: 'ID',
-    documentPage: 'FRONT_SIDE',
-    documentCountry: 'CZ',
-    documentCode: 1234,
-  },
-  // další filtry...
-];
+
 export const Document = ({
   navigation,
+  route: {
+    params: {configuration},
+  },
 }: NativeStackScreenProps<RootStackParamList, 'Document'>) => {
   const [enabledPictureButton, setEnabledPictureButton] = React.useState(false);
   const documentPictureViewRef = React.useRef(null);
@@ -69,12 +71,12 @@ export const Document = ({
             onPress={handleTakeNextDocumentPicture}
           />
           <ZenId.DocumentPictureView
-            acceptableInput={filters}
+            configuration={configuration}
             ref={documentPictureViewRef}
             style={{
               flex: 1,
               width: '100%',
-              height: '50%',
+              height: '100%',
             }}
           />
         </>
