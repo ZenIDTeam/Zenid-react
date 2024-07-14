@@ -118,49 +118,55 @@ class DocumentPictureView: UIView, DocumentControllerDelegate {
         }
     }
 
-    @objc func activateNextDocumentPicture() {
-        documentController?.getDocumentResult()
-        print("Picture taken")
-    }
+   
+  
+  func sendResult(result: DocumentResult){
+    
+    DispatchQueue.global(qos: .userInitiated).async {
+        print("Processing scanned result")
+        guard let image = result.signature?.image else {
+            print("No image found in result")
+            return
+        }
+        guard let uiImage = UIImage(data: image) else {
+            print("Failed to create UIImage from result image data")
+            return
+        }
+        let savedImage = self.saveImage(image: uiImage)
+        let imageData = result.signature?.image.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        let returnData: [String: Any] = [
+            "stateIndex": result.state.rawValue,
+            "role": result.role?.rawValue,
+            "country": result.country?.rawValue,
+            "documentCode": result.code?.rawValue,
+            "pageCode": result.page?.rawValue,
+            "signature": result.signature?.signature,
+            "filePath": savedImage,
+            "file": imageData
+        ]
 
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: returnData, options: [])
+            let jsonString = String(data: jsonData, encoding: .utf8)!
+            DispatchQueue.main.async {
+                RNEventEmitter.emitter.sendEvent(withName: "onPictureTaken", body: jsonString)
+            }
+        } catch let error as NSError {
+            print("Error serializing result data: \(error), \(error.userInfo)")
+        }
+    }
+  }
+  @objc func activateNextDocumentPicture() {
+    guard let result = documentController?.getDocumentResult() else { return}
+      print("Picture taken")
+    sendResult(result: result)
+  }
     func controller(_ controller: DocumentController, didScan result: DocumentResult, nfcCode: String) {
         print("Did scan document with NFC code: \(nfcCode)")
     }
 
     func controller(_ controller: DocumentController, didScan result: DocumentResult) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            print("Processing scanned result")
-            guard let image = result.signature?.image else {
-                print("No image found in result")
-                return
-            }
-            guard let uiImage = UIImage(data: image) else {
-                print("Failed to create UIImage from result image data")
-                return
-            }
-            let savedImage = self.saveImage(image: uiImage)
-            let imageData = result.signature?.image.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-            let returnData: [String: Any] = [
-                "stateIndex": result.state.rawValue,
-                "role": result.role?.rawValue,
-                "country": result.country?.rawValue,
-                "documentCode": result.code?.rawValue,
-                "pageCode": result.page?.rawValue,
-                "signature": result.signature?.signature,
-                "filePath": savedImage,
-                "file": imageData
-            ]
-
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: returnData, options: [])
-                let jsonString = String(data: jsonData, encoding: .utf8)!
-                DispatchQueue.main.async {
-                    RNEventEmitter.emitter.sendEvent(withName: "onPictureTaken", body: jsonString)
-                }
-            } catch let error as NSError {
-                print("Error serializing result data: \(error), \(error.userInfo)")
-            }
-        }
+        sendResult(result: result)
     }
 
     func controller(_ controller: DocumentController, didRecord videoURL: URL) {

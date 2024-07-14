@@ -3,7 +3,7 @@ import RecogLib_iOS
 
 @objc(ZenIdModule)
 class ZenIdModule: NSObject, RCTBridgeModule {
-  
+  weak var bridge: RCTBridge?
   static func moduleName() -> String! {
     return "ZenIdModule"
   }
@@ -50,8 +50,15 @@ class ZenIdModule: NSObject, RCTBridgeModule {
   }
 
   @objc
-   func activateNextDocumentPicture(_ viewTag: NSNumber, resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
-   print("ahoj")
+   func activateTakeNextDocumentPicture(_ viewTag: NSNumber, resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+     DispatchQueue.main.async {
+       if let view = self.bridge?.uiManager.view(forReactTag: viewTag) as? DocumentPictureView {
+         view.activateNextDocumentPicture()
+         resolve(nil)
+       } else {
+         reject("ViewNotFound", "Could not find view with tag \(viewTag)", nil)
+       }
+     }
    }
   
   
