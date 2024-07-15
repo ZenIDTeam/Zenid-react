@@ -38,15 +38,11 @@ export const sendSamplePicture = async ({
   file,
 }: PictureTakenResult): Promise<MinedDataType | undefined> => {
   try {
-    console.log('filePath', DocumentDirectoryPath, filePath);
     if (!(await exists(filePath))) {
       console.error('File does not exist');
       return;
     }
     const imageData = base64toBinary(file);
-    console.log('----file-----');
-    console.log(file);
-    console.log(imageData);
     console.log('Reading file');
     const encoder = new TextEncoder();
 
@@ -67,14 +63,9 @@ export const sendSamplePicture = async ({
     url.searchParams.append('api_key', apiKey);
     console.log('url', url.toString());
 
-    // console.log('file', data);
-    // Odeslání souboru pomocí fetch
-    // ...
-
     const response = await axiosInstance
       .post(url.toString(), httpBodyData, {
         headers: {
-          //  'Content-Type': 'multipart/form-data',
           'Content-type': '"application/octet-stream"',
           Accept: 'application/json',
           'Content-Length': httpBodyData.length.toString(),
