@@ -1,79 +1,393 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# ZenID Integration for React Native
 
-# Getting Started
+This module integrates the ZenID SDK into your React Native application, allowing you to perform document verification. The integration covers both iOS and Android platforms.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Table of Contents
 
-## Step 1: Start the Metro Server
+- [ZenID Integration for React Native](#zenid-integration-for-react-native)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+    - [iOS Installation](#ios-installation)
+    - [Android Installation](#android-installation)
+  - [Usage](#usage)
+    - [Authorization](#authorization)
+      - [JavaScript](#javascript)
+    - [Document Verification](#document-verification)
+      - [JavaScript](#javascript-1)
+    - [Sending Image with Signature](#sending-image-with-signature)
+  - [Configuration](#configuration)
+    - [iOS](#ios)
+    - [Android](#android)
+  - [API Documentation](#api-documentation)
+    - [Methods](#methods)
+      - [`ZenId.getChallengeToken()`](#zenidgetchallengetoken)
+      - [`ZenId.authorize(responseToken)`](#zenidauthorizeresponsetoken)
+    - [DocumentPictureView](#documentpictureview)
+  - [Hooks](#hooks)
+    - [`useOnDocumentPictureStateChanged`](#useondocumentpicturestatechanged)
+    - [`useOnPictureTaken`](#useonpicturetaken)
+  - [Known Issues](#known-issues)
+  - [More info](#more-info)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Features
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- Document verification (ID card, Passport, Driving license, etc.)
 
-```bash
-# using npm
-npm start
+## Prerequisites
 
-# OR using Yarn
-yarn start
+- React Native 0.60 or higher
+- iOS 13.0 or higher
+- Android 5.0 (API level 21) or higher
+- Xcode 15 or higher
+- Android Studio with NDK 21.3.6528147
+
+## Installation
+
+Instalation is already complete in this repository, but it can be needed to verify for your usecase
+
+### iOS Installation
+
+1. **Static Linking of Frameworks**
+
+Link your project against `RecogLib.xcframework` and `LibZenid.xcframework` frameworks. Frameworks are located in the `Sources` directory of the ZenID SDK.
+
+2. **Installation with SPM**
+
+- Open your Xcode project.
+- Add remote package dependency `https://github.com/ZenIDTeam/ZenID-ios.git`.
+- In your app target, General tab add **LibZenid_iOS** and **Recoglib_iOS** frameworks.
+
+3. **Add ZenID modules**
+   Add ZenId modules provided to `./Modules` in root of application
+
+### Android Installation
+
+1. **Add the required AAR files**
+
+Put the ZenID AAR files in the `libs` folder of your app.
+
+2. **Update `build.gradle`**
+
+Edit the `build.gradle` file of your app and add the following dependencies:
+
+```groovy
+ext {
+    okHttpVersion = '3.14.9'
+    retrofitVersion = '2.6.2'
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.otaliastudios:cameraview:2.6.4'
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
+}
 ```
 
-## Step 2: Start your Application
+3. **Add credentials to updated Android camera**
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+To reduce the size of your APK, apply APK split by ABI:
 
-### For Android
+```groovy
+    maven {
+            url 'https://maven.pkg.github.com/ZenIDTeam/CameraView'
+            credentials {
+                username = "ZenIDTeam"
+                password = "---your key---"
+            }
 
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+        }
 ```
 
-### For iOS
+## Usage
 
-```bash
-# using npm
-npm run ios
+### Authorization
 
-# OR using Yarn
-yarn ios
+Before using any SDK features, you need to authorize the SDK.
+
+#### JavaScript
+
+1. **Initialize app (needed for android only, but it can be called for ios aswell)**
+
+   ```javascript
+   useEffect(() => {
+     ZenId.initializeSdk()
+       .then(message => {
+         console.log(message);
+         setIsLoading(false);
+       })
+       .catch(error => {
+         console.error(error);
+       });
+   }, []);
+   ```
+
+1. **Get challengeToken from SDK and send `challengeToken` to the initSDK API endpoint and authorize the SDK:**
+
+```javascript
+import axios from 'axios';
+
+const authorizeSDK = async () => {
+  const challengeToken = await ZenId.getChallengeToken();
+
+  try {
+    const response = await axios.get(
+      `https://your-api-url/initSdk?token=${challengeToken}`,
+    );
+    const responseToken = response.data.Response;
+
+    const authorized = await ZenId.authorize(responseToken);
+    if (authorized) {
+      console.log('SDK authorized successfully');
+    } else {
+      console.error('SDK authorization failed');
+    }
+  } catch (error) {
+    console.error('Error during SDK authorization:', error);
+  }
+};
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+1. **Select profile**
+   After authorization you need to select profile of app... if you pass empty string, default profile will be selected
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```javascript
+ZenId.selectProfile('');
+```
 
-## Step 3: Modifying your App
+### Document Verification
 
-Now that you have successfully run the app, let's modify it.
+#### JavaScript
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+1. **Use DocumentPictureView Component from sdk to show camera capture:**
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+```javascript
+<ZenId.DocumentPictureView
+  configuration={configuration}
+  ref={documentPictureViewRef}
+  style={{
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  }}
+/>
+```
 
-## Congratulations! :tada:
+2. **use UseOnPictureTaken hook with provided callback to handle picture take event**
 
-You've successfully run and modified your React Native App. :partying_face:
+```javascript
+const handlePictureTaken = (response: PictureTakenResult) => {
+  console.log('Document Picture Taken: ', response);
+  setIsLoading(true);
+  sendSamplePicture(response).then(data => {
+    if (!data) {
+      return;
+    }
+    navigation.navigate('Result', {data});
+  });
+};
+```
 
-### Now what?
+### Sending Image with Signature
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+To send the image along with its signature using base64 octet-stream, you can follow this approach:
 
-# Troubleshooting
+1. **Send image data provided in callback from sdk to Backend as octet stream with appended signature at the end of request:**
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```javascript
+const sendImageWithSignature = async (imageData, signature) => {
+  const imageData = base64toBinary(file);
+  console.log('Reading file');
+  const encoder = new TextEncoder();
 
-# Learn More
+  const signatureData = encoder.encode(signature);
+  const httpBodyData = new Uint8Array(imageData.length + signatureData.length);
+  httpBodyData.set(imageData, 0);
+  httpBodyData.set(signatureData, imageData.length);
 
-To learn more about React Native, take a look at the following resources:
+  const url = new URL(baseUrl + 'sample');
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+  url.searchParams.append('country', country.toString());
+  url.searchParams.append('pageCode', pageCode.toString());
+  url.searchParams.append('role', role.toString());
+  url.searchParams.append('stateIndex', stateIndex.toString());
+  url.searchParams.append('expectedSampleType', 'DocumentPicture');
+  url.searchParams.append('api_key', apiKey);
+  console.log('url', url.toString());
+
+  const response = await axiosInstance
+    .post(url.toString(), httpBodyData, {
+      headers: {
+        'Content-type': '"application/octet-stream"',
+        Accept: 'application/json',
+        'Content-Length': httpBodyData.length.toString(),
+      },
+    })
+    .then(response => response.data)
+    .catch(error => {
+      if (error.response) {
+        // Server responded with a status other than 2xx
+        console.error('Server responded with status:', error.response.status);
+      } else if (error.request) {
+        // Request was made but no response received
+        console.error('No response received:', error.request);
+      } else {
+        // Something happened in setting up the request
+        console.error('Error setting up request:', error.message);
+      }
+      console.error('Error config:', error.config);
+    });
+};
+```
+
+## Configuration
+
+### iOS
+
+Link your project against the required frameworks and configure your Xcode project as specified in the installation steps.
+
+### Android
+
+Add the necessary dependencies and configure your `build.gradle` file as specified in the installation steps.
+
+## API Documentation
+
+### Methods
+
+#### `ZenId.getChallengeToken()`
+
+Fetches the challenge token required for SDK authorization.
+
+**Usage:**
+
+```javascript
+const challengeToken = await ZenId.getChallengeToken();
+```
+
+#### `ZenId.authorize(responseToken)`
+
+Authorizes the SDK with the provided response token.
+
+**Parameters:**
+
+- `responseToken` (string): The response token received from the initSDK API endpoint.
+
+**Usage:**
+
+```javascript
+const authorized = await ZenId.authorize(responseToken);
+if (authorized) {
+  console.log('SDK authorized successfully');
+} else {
+  console.error('SDK authorization failed');
+}
+```
+
+### DocumentPictureView
+
+The `DocumentPictureView` component is used to capture and verify documents.
+
+**Usage:**
+
+```javascript
+import {DocumentPictureView} from './ZenId';
+
+const MyDocumentPictureView = () => {
+  const handleStateChanged = state => {
+    console.log('State changed:', state);
+  };
+
+  const handlePictureTaken = result => {
+    console.log('Picture taken:', result);
+  };
+
+  return (
+    <DocumentPictureView
+      configuration={{
+        showVisualisation: true,
+        showHelperVisualisation: false,
+        showDebugVisualisation: false,
+        dataType: 'picture',
+        role: DocumentRole.Idc,
+        country: DocumentCountry.Cz,
+        page: DocumentPage.Front,
+        code: 1234,
+        documents: [
+          {
+            role: DocumentRole.Idc,
+            country: DocumentCountry.Cz,
+            page: DocumentPage.Front,
+            code: 1234,
+          },
+        ],
+        settings: {key: 'value'},
+      }}
+    />
+  );
+};
+
+export default MyDocumentPictureView;
+```
+
+Jistě, zde je dokumentace pro všechny hooky, které poskytujete ve vašem modulu:
+
+---
+
+## Hooks
+
+**Parameters:**
+
+- `callback` (function): The callback function to handle the event.
+
+### `useOnDocumentPictureStateChanged`
+
+This hook is used to handle changes in the document picture state.
+
+**Usage:**
+
+```javascript
+import {useOnDocumentPictureStateChanged} from './ZenId';
+
+const onStateChanged = useOnDocumentPictureStateChanged(state => {
+  console.log('Document picture state changed:', state);
+});
+```
+
+**Parameters:**
+
+- `callback` (function): The callback function to handle state changes.
+
+### `useOnPictureTaken`
+
+This hook is used to handle the event when a picture is taken.
+
+**Usage:**
+
+```javascript
+import {useOnPictureTaken} from './ZenId';
+
+const onPictureTaken = useOnPictureTaken(result => {
+  console.log('Picture taken:', result);
+});
+```
+
+**Parameters:**
+
+- `callback` (function): The callback function to handle the picture taken event.
+
+## Known Issues
+
+- Make sure to handle the necessary permissions for camera access on both iOS and Android.
+- Ensure that the device has a working camera for document verification.
+
+## More info
+
+- [ZenId-ios](https://github.com/ZenIDTeam/ZenID-ios/blob/master/README.md)
+- [ZenId-Android](https://github.com/ZenIDTeam/ZenID-android-sample)
