@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.5] - 2024-06-12
+## [1.0.5] - 2024-07-12
 
 ### Added
 
@@ -19,4 +19,4 @@
 
 #### Android
 
-- RecogLibC v4.1.7 - (ndk25 version)
+- RecogLibC v3.8.1 - (ndk25.1.8937393 version)
