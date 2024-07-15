@@ -105,6 +105,24 @@ To reduce the size of your APK, apply APK split by ABI:
 
         }
 ```
+## Running
+
+To run application in iOS run 
+```
+npm run ios
+```
+
+To run application in Android run
+
+```
+npm run android
+```
+
+### Building application
+
+- To build application for iOS, open `ios` folder in xcode like ios project and build like standard ios application
+- To build application for Android, run `./gradlew assembleRelease` in `android` folder
+
 
 ## Usage
 
