@@ -11,6 +11,8 @@ This module integrates the ZenID SDK into your React Native application, allowin
   - [Installation](#installation)
     - [iOS Installation](#ios-installation)
     - [Android Installation](#android-installation)
+  - [Running](#running)
+    - [Building application](#building-application)
   - [Usage](#usage)
     - [Authorization](#authorization)
       - [JavaScript](#javascript)
@@ -41,7 +43,7 @@ This module integrates the ZenID SDK into your React Native application, allowin
 - iOS 13.0 or higher
 - Android 5.0 (API level 21) or higher
 - Xcode 15 or higher
-- Android Studio with NDK 21.3.6528147
+- Android Studio with NDK 25.1.8937393
 
 ## Installation
 
@@ -105,9 +107,11 @@ To reduce the size of your APK, apply APK split by ABI:
 
         }
 ```
+
 ## Running
 
-To run application in iOS run 
+To run application in iOS run
+
 ```
 npm run ios
 ```
@@ -122,7 +126,6 @@ npm run android
 
 - To build application for iOS, open `ios` folder in xcode like ios project and build like standard ios application
 - To build application for Android, run `./gradlew assembleRelease` in `android` folder
-
 
 ## Usage
 
@@ -318,8 +321,6 @@ The `DocumentPictureView` component is used to capture and verify documents.
 import {DocumentPictureView} from './ZenId';
 
 const MyDocumentPictureView = () => {
-
-
   return (
     <DocumentPictureView
       configuration={{
@@ -347,8 +348,6 @@ const MyDocumentPictureView = () => {
 
 export default MyDocumentPictureView;
 ```
-
-
 
 ## Hooks
 
