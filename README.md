@@ -300,13 +300,7 @@ The `DocumentPictureView` component is used to capture and verify documents.
 import {DocumentPictureView} from './ZenId';
 
 const MyDocumentPictureView = () => {
-  const handleStateChanged = state => {
-    console.log('State changed:', state);
-  };
 
-  const handlePictureTaken = result => {
-    console.log('Picture taken:', result);
-  };
 
   return (
     <DocumentPictureView
@@ -336,9 +330,7 @@ const MyDocumentPictureView = () => {
 export default MyDocumentPictureView;
 ```
 
-Jistě, zde je dokumentace pro všechny hooky, které poskytujete ve vašem modulu:
 
----
 
 ## Hooks
 
