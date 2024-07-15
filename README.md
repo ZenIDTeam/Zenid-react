@@ -44,7 +44,7 @@ This module integrates the ZenID SDK into your React Native application, allowin
 - Android 5.0 (API level 21) or higher
 - Xcode 15 or higher
 - Android Studio with NDK 25.1.8937393
-
+- Version of RecogLib according to the changelog must not be newer than version of installed ZenID backend
 ## Installation
 
 Instalation is already complete in this repository, but it can be needed to verify for your usecase
